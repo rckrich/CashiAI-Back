@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AiDefaultMessage;
 use App\Models\AiUser;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,8 +23,8 @@ class ApiController extends Controller
         }
 
         $aiUser = new AiUser();
-        $aiUser->name = $request->age;
-        $aiUser->email = $request->age;
+        $aiUser->name = $request->name;
+        $aiUser->email = $request->email;
         $aiUser->age = $request->age;
         $aiUser->save();
         $aiUser->refresh();
@@ -40,16 +41,12 @@ class ApiController extends Controller
      */
     public function saveConversation(Request $request)
     {
-        $aiUser = new AiUser();
-        $aiUser->name = $request->age;
-        $aiUser->email = $request->age;
-        $aiUser->age = $request->age;
+        $aiUser = AiUser::find($request->id);
+        $aiUser->interaction_date = Carbon::now();
         $aiUser->save();
-        $aiUser->refresh();
 
         return Response([
-            'id' => $aiUser->id,
-        ], 200);
+        ], 204);
     }
 
     /**
