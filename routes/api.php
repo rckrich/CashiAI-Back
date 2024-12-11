@@ -14,6 +14,6 @@ Route::group(['prefix' => 'v1'], function (){
 
     Route::group(['prefix' => 'default-messages'],
         function() {
-            Route::post('/', [ApiController::class, 'getDefaultMessages']);
+            Route::get('/', [ApiController::class, 'getDefaultMessages']);
         });
 });
