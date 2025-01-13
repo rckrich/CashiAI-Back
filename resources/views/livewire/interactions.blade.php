@@ -91,7 +91,7 @@
                     @else
                     <tr class="bg-white border-b">
                         <th scope="row" class="px-6 py-4 text-center" colspan="8">
-                            No existe ninguna interacció
+                            No existe ninguna interacción
                         </th>
                     </tr>
                     @endif
