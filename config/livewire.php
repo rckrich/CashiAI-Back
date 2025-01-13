@@ -27,7 +27,7 @@ return [
     */
 
     'view_path' => resource_path('views/livewire'),
-    'assets_url' => env('APP_URL', 'http://localhost'),
+    'asset_url' => env('APP_URL', 'http://localhost'),
 
     /*
     |---------------------------------------------------------------------------
