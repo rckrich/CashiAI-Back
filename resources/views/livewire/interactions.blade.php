@@ -1,5 +1,5 @@
 <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+    <h2 class="font-semibold text-xl text-white leading-tight">
         {{ __('Interacciones') }}
     </h2>
 </x-slot>
@@ -30,7 +30,27 @@
             </div>
             @endif
 
+            <div class="block mb-0">
+                <div class="relative w-1/2  md:grid md:grid-cols-2 md:gap-6">
+                    <div class="col-span-3 sm:col-span-3 mb-4">
+                        <x-label for="date" value="Inicio" />
+                        <x-datetime-picker id="start" name="start" class="mt-1 block w-full" wire:model="start" />
+                        <x-input-error for="start" class="mt-2" />
+                    </div>
+                    <div class="col-span-3 sm:col-span-3 mb-4">
+                        <x-label for="date" value="Fin" />
+                        <x-datetime-picker id="end" name="end" class="mt-1 block w-full" wire:model="end" />
+                        <x-input-error for="end" class="mt-2" />
+                    </div>
+                </div>
+                <x-button class="mb-6" wire:click="search()" wire:loading.attr="disabled">
+                    Buscar
+                </x-button>
 
+                <x-button class="mb-6" wire:click="generateCsv()" wire:loading.attr="disabled">
+                    Generar CSV
+                </x-button>
+            </div>
 
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-gray-100">
