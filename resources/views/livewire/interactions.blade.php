@@ -31,13 +31,13 @@
             @endif
 
             <div class="block mb-0">
-                <div class="relative w-1/2  md:grid md:grid-cols-2 md:gap-6">
-                    <div class="col-span-3 sm:col-span-3 mb-4">
+                <div class="relative grid grid-cols-2 gap-2 md:grid md:grid-cols-2 md:gap-6">
+                    <div class=" mb-4">
                         <x-label for="date" value="Inicio" />
                         <x-datetime-picker id="start" name="start" class="mt-1 block w-full" wire:model="start" />
                         <x-input-error for="start" class="mt-2" />
                     </div>
-                    <div class="col-span-3 sm:col-span-3 mb-4">
+                    <div class=" mb-4">
                         <x-label for="date" value="Fin" />
                         <x-datetime-picker id="end" name="end" class="mt-1 block w-full" wire:model="end" />
                         <x-input-error for="end" class="mt-2" />
