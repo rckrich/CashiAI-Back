@@ -27,7 +27,7 @@ return [
     */
 
     'view_path' => resource_path('views/livewire'),
-    'asset_url' => env('ASSET_URL', ''),
+    'asset_url' => null,
 
     /*
     |---------------------------------------------------------------------------
