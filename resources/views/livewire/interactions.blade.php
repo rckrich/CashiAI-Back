@@ -71,7 +71,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if($users->count() > 0)
+                    @if($users != null && $users->count() > 0)
                     @foreach($users as $user)
                     <tr class="bg-white border-b  dark:text-gray-500 font-medium">
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -97,11 +97,6 @@
                     @endif
                     </tbody>
                 </table>
-                @if($users->count() > 0)
-                <div class="px-6 py-3">
-                    {{$users->links()}}
-                </div>
-                @endif
             </div>
         </div>
     </div>

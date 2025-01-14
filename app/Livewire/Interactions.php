@@ -14,23 +14,23 @@ class Interactions extends Component
 
     public $start;
     public $end;
+    public $users;
 
     public function render()
     {
+        return view('livewire.interactions');
+    }
+
+    public function mount(){
         $this->start = Carbon::now()->subDay()->startOfDay();
         $this->end = Carbon::now()->endOfDay();
-        $users = AiUser::whereBetween('interaction_date', [$this->start, $this->end])->paginate(20);
-        return view('livewire.interactions', [
-            'users' => $users
-        ]);
-    }
+
+}
+
 
     public function search()
     {
-        $users = AiUser::whereBetween('interaction_date', [$this->start, $this->end])->paginate(20);
-        return view('livewire.interactions', [
-            'users' => $users
-        ]);
+        $this->users = AiUser::whereBetween('interaction_date', [$this->start, $this->end])->get();
     }
 
     public function generateCsv()

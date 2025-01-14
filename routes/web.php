@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Livewire\Livewire;
 
 Route::get('/', HomeController::class);
 
@@ -18,3 +19,10 @@ Route::middleware([
         return view('admins');
     })->name('admins');
 });
+
+
+Livewire::setUpdateRoute(function ($handle) {
+    return Route::post(env('APP_REL_URL', '').'/livewire/update', $handle);
+});
+
+
