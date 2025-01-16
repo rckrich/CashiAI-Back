@@ -35,6 +35,7 @@ class Interactions extends Component
 
     public function generateCsv()
     {
-        return (new AiUsersExport($this->start, $this->end))->download('interactions.xlsx');
+        $date = Carbon::now()->translatedFormat('jFY_H_i');
+        return (new AiUsersExport($this->start, $this->end))->download('interactions_'.$date.'.xlsx');
     }
 }
