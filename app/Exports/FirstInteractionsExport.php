@@ -2,13 +2,13 @@
 
 namespace App\Exports;
 
-use App\Models\AiUser;
+use App\Models\FirstInteraction;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class AiUsersExport implements FromQuery, WithHeadings, WithMapping
+class FirstInteractionsExport implements FromQuery, WithHeadings, WithMapping
 {
     use Exportable;
 
@@ -20,15 +20,12 @@ class AiUsersExport implements FromQuery, WithHeadings, WithMapping
 
     public function query()
     {
-        return AiUser::query()->whereBetween('interaction_date', [$this->start, $this->end]);
+        return FirstInteraction::query()->whereBetween('interaction_date', [$this->start, $this->end]);
     }
 
     public function headings() : array
     {
         return array([
-                'Nombre',
-                'Correo electrónico',
-                'Edad',
                 'Fecha de interacción'
         ]);
     }
@@ -36,9 +33,6 @@ class AiUsersExport implements FromQuery, WithHeadings, WithMapping
     public function map($row) : array
     {
         return [
-            $row->name,
-            $row->email,
-            $row->age,
             $row->interaction_date
         ];
     }

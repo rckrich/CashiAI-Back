@@ -9,7 +9,8 @@ Route::group(['prefix' => 'v1'], function (){
 
     Route::group(['prefix' => 'conversations'],
         function() {
-            Route::post('/started', [ApiController::class, 'saveConversation']);
+            Route::post('/started', [ApiController::class, 'saveFirstInteraction']);
+            Route::post('/messages/add', [ApiController::class, 'addMessage']);
         });
 
     Route::group(['prefix' => 'default-messages'],

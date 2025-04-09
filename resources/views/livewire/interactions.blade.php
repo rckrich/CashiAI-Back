@@ -6,7 +6,22 @@
 
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div id="admin-users-list">
+        <div id="global-stats" class="bg-white py-10 border rounded-lg mb-12">
+            <h3 class="text-2xl text-center mb-6 font-semibold">Datos globales</h3>
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <dl class="grid grid-cols-1 gap-x-8 gap-y-4 text-center lg:grid-cols-2">
+                    <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+                        <dt class="text-base/7 text-gray-600">Primeras interacciones</dt>
+                        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{{$analytic->first_interactions}}</dd>
+                    </div>
+                    <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+                        <dt class="text-base/7 text-gray-600">Mensajes</dt>
+                        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{{$analytic->messages}}</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+        <div id="admin-interactions-list">
 
             @if(session()->has('message'))
             <div class="mb-6 flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3"
@@ -57,34 +72,16 @@
                     <thead class="text-xs text-gray-700 uppercase">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Nombre
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Correo electrónico
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Edad
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                            Interacción
                         </th>
                     </tr>
                     </thead>
                     <tbody>
-                    @if($users != null && $users->count() > 0)
-                    @foreach($users as $user)
-                    <tr class="bg-white border-b  dark:text-gray-500 font-medium">
+                    @if($interactions != null && $interactions->count() > 0)
+                    @foreach($interactions as $interaction)
+                    <tr class="bg-white border-b dark:text-gray-500 font-medium">
                         <td class="px-6 py-4 whitespace-nowrap">
-                            {{$user->name}}
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            {{$user->email}}
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            {{$user->age}}
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            {{$user->interaction_date}}
+                            {{$interaction->interaction_date}}
                         </td>
                     </tr>
                     @endforeach

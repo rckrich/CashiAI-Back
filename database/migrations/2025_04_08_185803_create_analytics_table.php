@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ai_users', function (Blueprint $table) {
+        Schema::create('analytics', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->integer('age');
-            $table->datetime('interaction_date')->nullable();
+            $table->integer('first_interactions');
+            $table->integer('messages');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ai_users');
+        Schema::dropIfExists('analytics');
     }
 };
