@@ -17,4 +17,9 @@ Route::group(['prefix' => 'v1'], function (){
         function() {
             Route::get('/', [ApiController::class, 'getDefaultMessages']);
         });
+
+    Route::group(['prefix' => 'videobundle'],
+        function() {
+            Route::get('/{type}', [ApiController::class, 'getVideoBundle']);
+        });
 });

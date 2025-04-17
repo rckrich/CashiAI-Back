@@ -7,6 +7,7 @@ use App\Models\Analytic;
 use App\Models\FirstInteraction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
@@ -50,6 +51,19 @@ class ApiController extends Controller
 
         return Response([
             'defaultMessages' => $aiMessages,
+        ], 200);
+    }
+
+    /**
+     * Get video bundle by type
+     */
+    public function getVideoBundle($type)
+    {
+        $bundle = Config::get('videobundle.'.$type);
+        $bundle['url'] = asset($bundle['url']);
+
+        return Response([
+            'videobundle' => $bundle,
         ], 200);
     }
 }

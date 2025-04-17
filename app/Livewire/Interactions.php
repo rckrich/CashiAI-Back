@@ -27,6 +27,7 @@ class Interactions extends Component
     public function mount(){
         $this->start = Carbon::now()->subDay()->startOfDay();
         $this->end = Carbon::now()->endOfDay();
+
         $this->analytic = Analytic::find(1);
 }
 
