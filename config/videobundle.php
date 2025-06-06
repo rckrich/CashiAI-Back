@@ -11,8 +11,8 @@ return array (
     'idle' =>
         array (
             'id' => 2,
-            'url_movil' => 'videos/avatar_iddle_2.mp4',
-            'url_desktop' =>  'videos/avatar_iddle_2.mp4',
+            'url_movil' => 'videos/avatar_idle_2.mp4',
+            'url_desktop' =>  'videos/avatar_idle_2.mp4',
             'type' => 'idle'
         ),
     'talking' =>
