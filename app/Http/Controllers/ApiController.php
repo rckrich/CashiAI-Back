@@ -60,7 +60,8 @@ class ApiController extends Controller
     public function getVideoBundle($type)
     {
         $bundle = Config::get('videobundle.'.$type);
-        $bundle['url'] = asset($bundle['url']);
+        $bundle['url_movil'] = asset($bundle['url_movil']);
+        $bundle['url_desktop'] = asset($bundle['url_desktop']);
 
         return Response([
             'videobundle' => $bundle,
