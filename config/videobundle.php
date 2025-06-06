@@ -11,15 +11,15 @@ return array (
     'idle' =>
         array (
             'id' => 2,
-            'url_movil' => 'videos/iddle_movil.mp4',
-            'url_desktop' =>  'videos/iddle_desktop.mp4',
+            'url_movil' => 'videos/avatar_iddle_2.mp4',
+            'url_desktop' =>  'videos/avatar_iddle_2.mp4',
             'type' => 'idle'
         ),
     'talking' =>
         array (
             'id' => 3,
-            'url_movil' => 'videos/talk_movil.mp4',
-            'url_desktop' =>  'videos/talk_desktop.mp4',
+            'url_movil' => 'videos/avatar_speaking_2.mp4',
+            'url_desktop' =>  'videos/avatar_speaking_2.mp4',
             'type' => 'talking'
         ),
 );
