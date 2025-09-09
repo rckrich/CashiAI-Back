@@ -80,6 +80,9 @@ class ApiController extends Controller
     public function getResponse(Request $request)
     {
         $response = $this->openAIService->getResponse($request->input, $request->active_thread);
-        dd($response);
+
+        return Response([
+            'response' => $response,
+        ], 200);
     }
 }
