@@ -22,4 +22,9 @@ Route::group(['prefix' => 'v1'], function (){
         function() {
             Route::get('/{type}', [ApiController::class, 'getVideoBundle']);
         });
+
+    Route::group(['prefix' => 'responses'],
+        function() {
+            Route::post('', [ApiController::class, 'getResponse']);
+        });
 });

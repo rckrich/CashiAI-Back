@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AiDefaultMessage;
 use App\Models\Analytic;
 use App\Models\FirstInteraction;
+use App\Services\OpenAIService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -15,6 +16,14 @@ class ApiController extends Controller
     /**
      * Register conversation
      */
+
+    protected $openAIService;
+
+    public function __construct(OpenAIService $openAIService)
+    {
+        $this->openAIService = $openAIService;
+    }
+
     public function saveFirstInteraction(Request $request)
     {
         $firstInteraction = new FirstInteraction();
@@ -66,5 +75,11 @@ class ApiController extends Controller
         return Response([
             'videobundle' => $bundle,
         ], 200);
+    }
+
+    public function getResponse(Request $request)
+    {
+        $response = $this->openAIService->getResponse($request->input, $request->active_thread);
+        dd($response);
     }
 }
