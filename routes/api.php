@@ -26,5 +26,6 @@ Route::group(['prefix' => 'v1'], function (){
     Route::group(['prefix' => 'responses'],
         function() {
             Route::post('', [ApiController::class, 'getResponse']);
+            Route::post('/audio', [ApiController::class, 'getAudioSpeech']);
         });
 });

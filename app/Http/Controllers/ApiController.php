@@ -9,6 +9,7 @@ use App\Services\OpenAIService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
@@ -82,7 +83,28 @@ class ApiController extends Controller
         $response = $this->openAIService->getResponse($request->input, $request->active_thread);
 
         return Response([
-            'response' => $response,
+            'id' => $response->id,
+            'output' => $response->output,
         ], 200);
+    }
+
+    public function getAudioSpeech(Request $request)
+    {
+        try {
+            $response = $this->openAIService->getAudioSpeech($request->input);
+
+            //$filename = 'speech_' . uniqid() . '.mp3';
+            //Storage::disk('public')->put('speeches/' . $filename, $response);
+            //return response()->download(storage_path('app/public/speeches/' . $filename));00);
+
+            return response($response)
+                ->header('Content-Type', 'audio/wav') // Set the correct content type
+                ->header('Content-Disposition', 'inline; filename="speech.mp3"');
+
+        } catch (\Exception $e) {
+            return Response([
+                'error' => 'Failed to generate speech'
+            ], 500);
+        }
     }
 }
